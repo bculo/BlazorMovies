@@ -1,0 +1,19 @@
+﻿@page "/"
+@inject Services.SingletonService singleton
+@inject BlazorMovie.Client.Contracts.IRepository repository;
+
+<p>Current count: @singleton.Value</p>
+
+<div>
+    <MovieList Movies="movies">
+    </MovieList>
+</div>
+
+@code {
+    List<MovieModel> movies = default;
+
+    protected override void OnInitialized()
+    {
+        movies = repository.GetMovies();
+    }
+}

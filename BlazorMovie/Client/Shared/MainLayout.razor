@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+    <div class="top-row px-4">
+        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+    </div>
+
+    <div class="content px-4">
+        <CascadingValue Value="State">
+            @Body
+        </CascadingValue>
+    </div>
+</div>
+
+@code {
+
+    public AppState State { get; set; }
+
+    public class AppState
+    {
+        public string Color { get; set; } = "Blue";
+        public string Size { get; set; } = "Red";
+    }
+
+    protected override void OnInitialized() => State = new AppState();
+}

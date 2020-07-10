@@ -1,0 +1,37 @@
+﻿@typeparam T
+
+@if (Instances == null)
+{
+    if (NullTemplate is null)
+    {
+        <p>There are no movies</p>
+    }
+    else
+    {
+        @NullTemplate
+    }
+}
+else if (Instances.Count == 0)
+{
+    if (EmptyTemplate is null)
+    {
+        <p>There are no movies</p>
+    }
+    else
+    {
+        @EmptyTemplate
+    }
+}
+else
+{
+    @foreach (var movie in Instances)
+    {
+        @ItemTemplate(movie);
+    }
+}
+@code {
+    [Parameter] public RenderFragment NullTemplate { get; set; }
+    [Parameter] public List<T> Instances { get; set; }
+    [Parameter] public RenderFragment EmptyTemplate { get; set; }
+    [Parameter] public RenderFragment<T> ItemTemplate { get; set; }
+}
