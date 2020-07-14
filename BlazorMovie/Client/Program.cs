@@ -1,15 +1,10 @@
-using System;
-using System.Net.Http;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Text;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using BlazorMovie.Client.Services;
 using BlazorMovie.Client.Contracts;
 using BlazorMovie.Client.Repositories;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace BlazorMovie.Client
 {
@@ -32,8 +27,6 @@ namespace BlazorMovie.Client
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
-            services.AddTransient<TransientService>();
-            services.AddSingleton<SingletonService>();
             services.AddTransient<IRepository, InMemoryRepository>();
         }
     }

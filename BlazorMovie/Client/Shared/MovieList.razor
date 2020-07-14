@@ -1,47 +1,23 @@
 ﻿@inject IJSRuntime js
 
-<GenericList Instances="Movies">
-    <ItemTemplate Context="movie">
-        <MovieInstance Movie="movie" DeleteMovie="DeleteMovie"></MovieInstance>
-    </ItemTemplate>
-</GenericList>
-
-<Confirmation @ref="confirmation" onCancel="OnCancel" onConfirm="OnConfirm">
-    <ChildContent>Do you wish to delete this movie @MovieToDelete.Title?</ChildContent>
-</Confirmation>
-
+<div class="movies-container">
+    <GenericList Instances="Movies">
+        <ItemTemplate Context="movie">
+            <MovieInstance Movie="movie" DeleteMovie="DeleteMovie"></MovieInstance>
+        </ItemTemplate>
+    </GenericList>
+</div>
 
 @code {
-    Confirmation confirmation;
     [Parameter] public List<MovieModel> Movies { get; set; }
-
-
-    public MovieModel MovieToDelete { get; set; }
 
     public async Task DeleteMovie(MovieModel model)
     {
-        MovieToDelete = model;
-        confirmation.Show();
-        /*
         var result = await js.Confirm($"Are you sure you want to delete {model.Title}?");
 
         await js.Log("custom message");
 
-        if(result)
+        if (result)
             Movies.Remove(model);
-        */
-    }
-
-    public void OnConfirm()
-    {
-        Movies.Remove(MovieToDelete);
-        confirmation.Hide();
-        MovieToDelete = null;
-    }
-
-    public void OnCancel()
-    {
-        confirmation.Hide();
-        MovieToDelete = null;
     }
 }

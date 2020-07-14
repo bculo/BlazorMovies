@@ -10,14 +10,20 @@
     </div>
 
     <div class="content px-4">
+        <!--
         <CascadingValue Value="State">
-            @Body
+            (AT)Body
         </CascadingValue>
+        -->
+
+        @Body
     </div>
 </div>
 
 @code {
 
+    /*
+    
     public AppState State { get; set; }
 
     public class AppState
@@ -27,4 +33,6 @@
     }
 
     protected override void OnInitialized() => State = new AppState();
+
+    */
 }

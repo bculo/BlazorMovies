@@ -1,21 +1,5 @@
 ﻿@page "/counter"
 
-<h1 style="color: @State.Color">Counter</h1>
-
-<div style="display: flex">
-    <div style="width: 150px">
-        <select @bind="State.Color">
-            <option value="Blue">Blue</option>
-            <option value="Red">Red</option>
-            <option value="Green">Green</option>
-        </select>
-    </div>
-</div>
-
-
 <p>Current count: @currentCount</p>
-<p>Singleton count: @Singleton.Value</p>
-<p>Transinet count: @Transient.Value</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-<button class="btn btn-primary" @onclick="IncrementCountJavaScript">Click me JAVASCRIPT</button>

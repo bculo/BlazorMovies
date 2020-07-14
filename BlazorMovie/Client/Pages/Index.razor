@@ -1,8 +1,5 @@
 ﻿@page "/"
-@inject Services.SingletonService singleton
 @inject BlazorMovie.Client.Contracts.IRepository repository;
-
-<p>Current count: @singleton.Value</p>
 
 <div>
     <MovieList Movies="movies">
